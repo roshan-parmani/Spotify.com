@@ -13,7 +13,7 @@ function formatTime(seconds) {
   return `${formattedMins}:${formattedSecs}`;
 }
 async function getData(){
-   let a = await fetch("http://127.0.0.1:3000/songs/")
+   let a = await fetch("https://github.com/roshan-parmani/Spotify.com/tree/main/songs")
    let response = await a.text();
 
    let div = document.createElement("div")
