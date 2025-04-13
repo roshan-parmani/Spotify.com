@@ -15,7 +15,7 @@ function formatTime(seconds) {
 }
 async function getData(folder) {
   currFolder = folder;
-  let a = await fetch(`${folder}`);
+  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/${folder}`);
   let response = await a.text();
 
   let div = document.createElement("div");
@@ -101,7 +101,7 @@ Array.from(document.querySelectorAll(".play-now-btn")).forEach((btn, index) => {
 };
 
 async function displayAlbums() {
-  let a = await fetch(`songs/`);
+  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/`);
   let response = await a.text();
 
   let div = document.createElement("div");
@@ -120,7 +120,7 @@ async function displayAlbums() {
       let folder = e.href.split("/").slice(-2)[1];
       if(!firstFolder) firstFolder = folder;
       //get the metadata from the folder
-      let a = await fetch(`songs/${folder}/info.json`);
+      let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/${folder}/info.json`);
       response = await a.json();
 
       cardSec.innerHTML =
