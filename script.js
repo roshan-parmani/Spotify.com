@@ -38,11 +38,7 @@ async function getData(folder) {
 let play = document.querySelector(".play");
 
 const playmusic = (track) => {
-  // currentSong.src = `/${currFolder}/` + track;
-
-  currentSong.src = `${basePath}${currFolder}/` + track;
-
-  
+  currentSong.src = `/${currFolder}/` + track;
   if (!firstLoad) {
     currentSong.play();
     play.src = "pause.svg";
@@ -106,7 +102,7 @@ Array.from(document.querySelectorAll(".play-now-btn")).forEach((btn, index) => {
 };
 
 async function displayAlbums() {
-  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/`);
+  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs`);
   let response = await a.text();
 
   let div = document.createElement("div");
