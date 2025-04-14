@@ -102,6 +102,7 @@ Array.from(document.querySelectorAll(".play-now-btn")).forEach((btn, index) => {
 };
 
 async function displayAlbums() {
+  let folder = e.href.split("/").slice(-2)[1];
   let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/${folder}`);
   let response = await a.text();
 
@@ -118,7 +119,7 @@ async function displayAlbums() {
     if (e.href.includes("/songs/")) {
     
 
-      let folder = e.href.split("/").slice(-2)[1];
+     
       if(!firstFolder) firstFolder = folder;
       //get the metadata from the folder
       let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/${folder}/info.json`);
