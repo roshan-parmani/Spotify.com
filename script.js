@@ -102,7 +102,7 @@ Array.from(document.querySelectorAll(".play-now-btn")).forEach((btn, index) => {
 };
 
 async function displayAlbums() {
-  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs`);
+  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/${folder}`);
   let response = await a.text();
 
   let div = document.createElement("div");
