@@ -4,9 +4,6 @@ let currFolder;
 let currentSong = new Audio();
 let firstLoad = true;
 
-
-
-
 function formatTime(seconds) {
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
@@ -18,7 +15,7 @@ function formatTime(seconds) {
 }
 async function getData(folder) {
   currFolder = folder;
-  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/${folder}/info.json`);
+  let a = await fetch(`https://github.com/roshan-parmani/Spotify.com/tree/main/songs/${folder}`);
   let response = await a.text();
 
   let div = document.createElement("div");
@@ -39,6 +36,8 @@ let play = document.querySelector(".play");
 
 const playmusic = (track) => {
   currentSong.src = `/${currFolder}/` + track;
+
+  
   if (!firstLoad) {
     currentSong.play();
     play.src = "pause.svg";
@@ -102,8 +101,7 @@ Array.from(document.querySelectorAll(".play-now-btn")).forEach((btn, index) => {
 };
 
 async function displayAlbums() {
-  let folder = e.href.split("/").slice(-2)[1];
-  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/${folder}`);
+  let a = await fetch(`https://github.com/roshan-parmani/Spotify.com/tree/main/songs/`);
   let response = await a.text();
 
   let div = document.createElement("div");
@@ -119,10 +117,10 @@ async function displayAlbums() {
     if (e.href.includes("/songs/")) {
     
 
-     
+      let folder = e.href.split("/").slice(-2)[1];
       if(!firstFolder) firstFolder = folder;
       //get the metadata from the folder
-      let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/${folder}/info.json`);
+      let a = await fetch(`https://github.com/roshan-parmani/Spotify.com/tree/main/songs/${folder}/info.json`);
       response = await a.json();
 
       cardSec.innerHTML =
@@ -147,7 +145,7 @@ async function displayAlbums() {
   };
   // automatic load the first folder
   if (firstFolder) {
-    songs = await getData(`https://roshan-parmani.github.io/Spotify.com/songs/${firstFolder}`);
+    songs = await getData(`songs/${firstFolder}`);
     playmusic(songs[0]);
   }
 
