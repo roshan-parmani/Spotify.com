@@ -3,7 +3,7 @@ let songs;
 let currFolder;
 let currentSong = new Audio();
 let firstLoad = true;
-const basePath = location.pathname.split("/").slice(0, 2).join("/") + "/";
+const basePath = "/Spotify.com/";
 
 
 
@@ -106,7 +106,7 @@ Array.from(document.querySelectorAll(".play-now-btn")).forEach((btn, index) => {
 };
 
 async function displayAlbums() {
-  let a = await fetch(`${basePath}songs/`);
+  let a = await fetch(`${basePath}/songs/`);
   let response = await a.text();
 
   let div = document.createElement("div");
