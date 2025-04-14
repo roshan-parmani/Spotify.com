@@ -3,7 +3,7 @@ let songs;
 let currFolder;
 let currentSong = new Audio();
 let firstLoad = true;
-const basePath = "/Spotify.com/";
+
 
 
 
@@ -18,7 +18,7 @@ function formatTime(seconds) {
 }
 async function getData(folder) {
   currFolder = folder;
-  let a = await fetch(`${basePath}/${folder}/info.json`);
+  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/${folder}/info.json`);
   let response = await a.text();
 
   let div = document.createElement("div");
@@ -106,7 +106,7 @@ Array.from(document.querySelectorAll(".play-now-btn")).forEach((btn, index) => {
 };
 
 async function displayAlbums() {
-  let a = await fetch(`${basePath}/songs/`);
+  let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/`);
   let response = await a.text();
 
   let div = document.createElement("div");
@@ -125,7 +125,7 @@ async function displayAlbums() {
       let folder = e.href.split("/").slice(-2)[1];
       if(!firstFolder) firstFolder = folder;
       //get the metadata from the folder
-      let a = await fetch(`${basePath}songs/${folder}/info.json`);
+      let a = await fetch(`https://roshan-parmani.github.io/Spotify.com/songs/${folder}/info.json`);
       response = await a.json();
 
       cardSec.innerHTML =
@@ -150,7 +150,7 @@ async function displayAlbums() {
   };
   // automatic load the first folder
   if (firstFolder) {
-    songs = await getData(`songs/${firstFolder}`);
+    songs = await getData(`https://roshan-parmani.github.io/Spotify.com/songs/${firstFolder}`);
     playmusic(songs[0]);
   }
 
